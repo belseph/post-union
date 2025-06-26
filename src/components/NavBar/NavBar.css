@@ -108,6 +108,8 @@
     position: relative;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(4px);
+    /* 🎯 SOMBRA: Efecto de sombra para elementos no seleccionados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-nav a:hover {
@@ -119,6 +121,28 @@
 .navbar-nav a.active {
     background: rgba(255, 255, 255, 0.25);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 🎯 NUEVO: Botón de mensajes con el mismo estilo que los links */
+.navbar-nav button {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* 🎯 SOMBRA: Mismo efecto de sombra que los links */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* 🔔 NUEVO: Botón de notificaciones */
@@ -153,9 +177,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: pulse 2s infinite;
+    /* 🎯 REMOVIDO: Efecto pulsante eliminado */
+    /* animation: pulse 2s infinite; */
 }
 
+/* 🎯 REMOVIDO: Animación pulse comentada */
+/*
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
@@ -164,6 +191,7 @@
         transform: scale(1.1);
     }
 }
+*/
 
 .menu {
     display: flex;
@@ -295,7 +323,8 @@
         margin: 0 1rem;
     }
 
-    .navbar-nav a {
+    .navbar-nav a,
+    .navbar-nav button {
         font-size: 0.8rem;
         padding: 0.4rem 0.8rem;
     }
@@ -308,7 +337,8 @@
         margin: 0 2rem;
     }
 
-    .navbar-nav a {
+    .navbar-nav a,
+    .navbar-nav button {
         font-size: 0.9rem;
         padding: 0.5rem 1rem;
     }
