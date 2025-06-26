@@ -10,6 +10,7 @@ import Footer from './components/Footer/Footer.tsx';
 import { AddPost } from './components/Home/AddPost.tsx';
 import About from './pages/About/About.tsx';
 import { AuthProvider, useAuth } from './context/AuthContext.tsx';
+import { PostsProvider } from './context/PostsContext.tsx';
 import PrivateRoute from './components/PrivateRoutes.tsx';
 import './App.css'
 
@@ -47,7 +48,9 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <AppContent />
+        <PostsProvider>
+          <AppContent />
+        </PostsProvider>
       </AuthProvider>
     </Router>
   );
