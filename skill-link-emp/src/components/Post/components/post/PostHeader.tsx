@@ -101,7 +101,21 @@ const PostHeader: React.FC<PostHeaderProps> = ({
     }
   };
 
-  const isAuthor = currentUserId && author.id === currentUserId;
+  // 🔧 CORRECCIÓN: Convertir ambos IDs a string para comparación consistente
+  const isAuthor = currentUserId && author.id && String(currentUserId) === String(author.id);
+
+  // 🔍 DEBUG: Logs para verificar la comparación
+  console.log('🔍 PostHeader Debug:', {
+    postId,
+    currentUserId,
+    authorId: author.id,
+    currentUserIdType: typeof currentUserId,
+    authorIdType: typeof author.id,
+    currentUserIdString: String(currentUserId),
+    authorIdString: String(author.id),
+    isAuthor,
+    comparison: `${String(currentUserId)} === ${String(author.id)}`
+  });
 
   console.log('PostHeader - createdAt:', {
     value: createdAt,

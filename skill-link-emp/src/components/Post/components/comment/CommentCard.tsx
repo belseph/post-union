@@ -132,7 +132,21 @@ const CommentCard: React.FC<CommentCardProps> = ({
     }
   };
 
-  const isAuthor = currentUserId && comment.author.id === currentUserId;
+  // 🔧 CORRECCIÓN: Convertir ambos IDs a string para comparación consistente
+  const isAuthor = currentUserId && comment.author.id && String(currentUserId) === String(comment.author.id);
+
+  // 🔍 DEBUG: Logs para verificar la comparación
+  console.log('🔍 CommentCard Debug:', {
+    commentId: comment.id,
+    currentUserId,
+    authorId: comment.author.id,
+    currentUserIdType: typeof currentUserId,
+    authorIdType: typeof comment.author.id,
+    currentUserIdString: String(currentUserId),
+    authorIdString: String(comment.author.id),
+    isAuthor,
+    comparison: `${String(currentUserId)} === ${String(comment.author.id)}`
+  });
 
   console.log(`Renderizando CommentCard ${comment.id}:`, {
     userReaction: comment.userReaction,
