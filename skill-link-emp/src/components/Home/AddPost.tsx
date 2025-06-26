@@ -174,22 +174,25 @@ export const AddPost = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-500 via-teal-600 to-purple-700 px-4 py-8">
-      <div className="max-w-2xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-500 via-teal-600 to-purple-700 px-4 py-6">
+      <div className="max-w-4xl mx-auto">
+        {/* Header con botón a la izquierda */}
+        <div className="flex items-center justify-between mb-6">
           <button
             onClick={handleBack}
-            className="flex items-center text-white/80 hover:text-white transition-colors duration-200 mb-4"
+            className="flex items-center text-white/80 hover:text-white transition-colors duration-200 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg backdrop-blur-sm"
           >
             <ArrowLeft className="w-5 h-5 mr-2" />
             Volver al inicio
           </button>
           
-          <div className="text-center">
+          <div className="text-center flex-1 mx-8">
             <h1 className="text-3xl font-bold text-white mb-2">Crear Nueva Publicación</h1>
             <p className="text-white/70">Comparte tu experiencia y conocimientos con la comunidad</p>
           </div>
+          
+          {/* Espacio para balance visual */}
+          <div className="w-32"></div>
         </div>
 
         {/* Formulario */}
@@ -318,62 +321,31 @@ export const AddPost = () => {
           </form>
         </div>
 
-        {/* Vista previa */}
-        {(formData.title.trim() || formData.description.trim() || selectedTags.length > 0) && (
-          <div className="mt-8 bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-            <h3 className="text-white font-semibold mb-3 flex items-center">
-              <Plus className="w-5 h-5 mr-2 text-purple-300" />
-              Vista previa de tu publicación
-            </h3>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold">
-                    {user?.name?.charAt(0) || 'U'}
-                  </span>
-                </div>
-                <div>
-                  <h4 className="text-white font-semibold">{user?.name || 'Usuario'}</h4>
-                  <p className="text-white/70 text-sm">Ahora</p>
-                </div>
-              </div>
-              
-              {selectedTags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {selectedTags.map((tagId) => {
-                    const tag = AVAILABLE_TAGS.find(t => t.id === tagId);
-                    return (
-                      <span
-                        key={tagId}
-                        className="px-3 py-1 bg-purple-500 text-white text-sm rounded-full"
-                      >
-                        #{tag?.label}
-                      </span>
-                    );
-                  })}
-                </div>
-              )}
-
-              {formData.title.trim() && (
-                <h2 className="text-xl font-bold text-white mb-3">
-                  {formData.title}
-                </h2>
-              )}
-              
-              <p className="text-white/90 whitespace-pre-wrap mb-4">
-                {formData.description || 'Tu contenido aparecerá aquí...'}
-              </p>
-
-              {imagePreview && (
-                <img 
-                  src={imagePreview} 
-                  alt="Vista previa" 
-                  className="w-full h-48 object-cover rounded-lg"
-                />
-              )}
-            </div>
-          </div>
-        )}
+        {/* Información adicional */}
+        <div className="mt-6 bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h3 className="text-white font-semibold mb-3 flex items-center">
+            <Plus className="w-5 h-5 mr-2 text-purple-300" />
+            Consejos para una buena publicación
+          </h3>
+          <ul className="space-y-2 text-white/70 text-sm">
+            <li className="flex items-start">
+              <span className="w-2 h-2 bg-purple-300 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+              Sé específico y proporciona valor real a la comunidad
+            </li>
+            <li className="flex items-start">
+              <span className="w-2 h-2 bg-purple-300 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+              Incluye ejemplos prácticos y casos de uso
+            </li>
+            <li className="flex items-start">
+              <span className="w-2 h-2 bg-purple-300 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+              Usa etiquetas relevantes para mejorar la visibilidad
+            </li>
+            <li className="flex items-start">
+              <span className="w-2 h-2 bg-purple-300 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+              Las imágenes ayudan a hacer tu contenido más atractivo
+            </li>
+          </ul>
+        </div>
       </div>
 
       {/* Modal de selección de tags */}
