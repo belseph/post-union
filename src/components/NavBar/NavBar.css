@@ -5,12 +5,12 @@
     top: 0;
     width: 100%;
     height: 4rem;
-    /* 🎨 NUEVO: Gradiente coherente con el resto de la app */
-    background: linear-gradient(135deg, #10B981, #14B8A6, #8B5CF6);
+    /* 🎨 NUEVO: Color morado coherente con el login */
+    background: #6D28D9;
     padding-left: 1rem;
     color: white;
     z-index: 1000;
-    /* Agregar sombra sutil para profundidad */
+    /* Sombra sutil para profundidad */
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
@@ -27,23 +27,24 @@
 }
 
 .navbar-logo__container {
-    /* 🎨 NUEVO: Gradiente más sutil y efecto hover */
-    background: linear-gradient(135deg, #059669, #0891B2);
+    /* 🎨 NUEVO: Morado bonito como en el login */
+    background: linear-gradient(135deg, #7C3AED, #8B5CF6);
     padding: 0.5rem;
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
     backdrop-filter: blur(0.25rem);
     -webkit-backdrop-filter: blur(0.25rem);
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
 }
 
 /* 🌟 NUEVO: Efecto hover amarillo para el logo */
 .navbar-logo__container:hover {
     background: linear-gradient(135deg, #F59E0B, #EAB308);
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
 }
 
 /* 🌟 NUEVO: Efecto de brillo en hover */
@@ -54,7 +55,7 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transform: rotate(45deg);
     animation: shine 0.6s ease-in-out;
 }
@@ -71,22 +72,23 @@
 /* 🌟 NUEVO: Efecto hover para el ícono dentro del logo */
 .navbar-logo__container:hover svg {
     color: white;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+    transform: scale(1.1);
 }
 
 .navbar-title {
     margin: 0;
     font-size: 1.5rem;
     font-weight: bold;
-    /* 🎨 NUEVO: Sombra de texto para mejor legibilidad */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    /* Sombra de texto para mejor legibilidad */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-subtitle {
     margin: 0;
     font-size: 0.8rem;
     padding-left: 1.3rem;
-    /* 🎨 NUEVO: Opacidad para jerarquía visual */
+    /* Opacidad para jerarquía visual */
     opacity: 0.9;
 }
 
@@ -102,62 +104,64 @@
     color: white;
     padding: 0.4rem 0.75rem;
     border: none;
-    border-radius: 0.3rem;
+    border-radius: 0.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 0.8rem;
-    /* 🎨 NUEVO: Fondo semi-transparente */
-    background: rgba(255, 255, 255, 0.1);
+    /* Fondo semi-transparente */
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(4px);
 }
 
 .menu-session:hover,
 .menu-register:hover {
-    /* 🎨 NUEVO: Hover más coherente */
-    background: rgba(255, 255, 255, 0.2);
+    /* Hover coherente con el morado */
+    background: rgba(255, 255, 255, 0.25);
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .dropdown-toggle {
-    /* 🎨 NUEVO: Fondo transparente para integración */
+    /* Fondo transparente para integración */
     background-color: transparent;
     color: white;
     padding: 0.25rem;
     border: none;
     cursor: pointer;
     font-size: 1rem;
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
     transition: all 0.3s ease;
 }
 
 .dropdown-toggle:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
     transform: scale(1.05);
 }
 
 .dropdown-toggle-icon {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     object-fit: cover;
     display: block;
-    border-radius: 0.5rem;
-    /* 🎨 NUEVO: Borde sutil */
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.75rem;
+    /* Borde sutil morado */
+    border: 2px solid rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .dropdown-toggle:hover .dropdown-toggle-icon {
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-color: rgba(245, 158, 11, 0.6);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    transform: scale(1.05);
 }
 
 .dropdown-menu {
     position: absolute;
     top: 100%;
     right: 0;
-    width: 9.375rem;
-    /* 🎨 NUEVO: Fondo más moderno */
+    width: 10rem;
+    /* Fondo moderno con blur */
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -167,8 +171,8 @@
     padding: 0.5rem 0;
     border-radius: 0.75rem;
     z-index: 2000;
-    /* 🎨 NUEVO: Borde sutil */
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Borde sutil */
+    border: 1px solid rgba(109, 40, 217, 0.2);
 }
 
 .dropdown-menu li {
@@ -191,8 +195,8 @@
 }
 
 .dropdown-menu li a:hover {
-    /* 🎨 NUEVO: Hover más elegante */
-    background: linear-gradient(135deg, #10B981, #14B8A6);
+    /* Hover morado coherente */
+    background: linear-gradient(135deg, #7C3AED, #8B5CF6);
     color: white;
     transform: translateX(2px);
 }
@@ -221,12 +225,17 @@
     }
 
     .dropdown-menu {
-        width: 10rem;
+        width: 11rem;
         padding: 0.75rem 0;
+    }
+
+    .dropdown-toggle-icon {
+        width: 40px;
+        height: 40px;
     }
 }
 
-/* 🎨 NUEVO: Animación sutil para el navbar completo */
+/* Animación sutil para el navbar completo */
 .navbar {
     animation: slideDown 0.5s ease-out;
 }
@@ -242,19 +251,7 @@
     }
 }
 
-/* 🎨 NUEVO: Efecto glassmorphism para el navbar */
-.navbar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    pointer-events: none;
-}
-
-/* 🎨 NUEVO: Responsive mejorado */
+/* Responsive mejorado */
 @media (max-width: 767px) {
     .navbar-title {
         font-size: 1.25rem;
@@ -266,5 +263,10 @@
     
     .navbar-logo__container {
         padding: 0.4rem;
+    }
+
+    .dropdown-toggle-icon {
+        width: 32px;
+        height: 32px;
     }
 }
