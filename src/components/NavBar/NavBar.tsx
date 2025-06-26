@@ -3,6 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Lightbulb } from 'lucide-react';
+import { getUserAvatar } from '../Post/utils/avatarUtils';
 import './NavBar.css';
 
 interface NavLink {
@@ -18,10 +19,16 @@ interface Props {
 
 /** Muestra el menú desplegable y define estado de los clics. */
 const NavBar: React.FC<Props> = ({ userIcon, links }) => {
-    const { isLoggedIn } = useAuth();
+    const { isLoggedIn, user } = useAuth();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
     const location = useLocation();
+
+    // 🖼️ NUEVO: Obtener la foto del usuario actual basada en su ID
+    const userAvatar = user?.userId ? getUserAvatar(user.userId) : userIcon;
+
+    console.log('🔍 NavBar - Usuario:', user);
+    console.log('🖼️ Avatar del usuario en NavBar:', userAvatar);
 
     const handleToggle = () => {
         setIsMenuOpen(prev => !prev);
@@ -61,7 +68,7 @@ const NavBar: React.FC<Props> = ({ userIcon, links }) => {
             {isLoggedIn && (
                 <div className="menu" ref={menuRef}>
                     <button className="dropdown-toggle" onClick={handleToggle}>
-                        <img src={userIcon} alt="Imagen de usuario" className="dropdown-toggle-icon" />
+                        <img src={userAvatar} alt="Imagen de usuario" className="dropdown-toggle-icon" />
                     </button>
                     {isMenuOpen && (
                         <ul className="dropdown-menu">
