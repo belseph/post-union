@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { MentorDashboard } from './components/MentorDashboard';
 import { EntrepreneurDashboard } from './components/EntrepreneurDashboard';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Home } from './components/Home';
 import { Login } from './components/Login/Login';
 import { ResetPasswordPage } from './components/Login/pages/ResetPasswordPage.tsx'
@@ -18,16 +18,22 @@ import './App.css'
 function AppContent() {
   const { user } = useAuth();
   const [selectedTag] = useState<string>('all');
+  const location = useLocation();
 
   // Obtener el ID del usuario actual desde el contexto
   const currentUserId = user?.userId || null;
 
+  // Determinar si mostrar NavBar y Footer basado en la ruta
+  const isLoginPage = location.pathname === '/';
+  
   console.log('🔍 Usuario en App:', user);
   console.log('🆔 Current User ID:', currentUserId);
 
   return (
     <div className='app-container'>
-      <NavBarWrapper />
+      {/* Solo mostrar NavBar si NO estamos en la página de login */}
+      {!isLoginPage && <NavBarWrapper />}
+      
       <main className='app-main-content'>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -39,7 +45,9 @@ function AppContent() {
           <Route path="/mentor-dashboard" element={<PrivateRoute><MentorDashboard /></PrivateRoute>} />
         </Routes>
       </main>
-      <Footer />
+      
+      {/* Solo mostrar Footer si NO estamos en la página de login */}
+      {!isLoginPage && <Footer />}
     </div>
   );
 }
