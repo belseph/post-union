@@ -7,16 +7,9 @@ const NavBarWrapper = () => {
     const navigate = useNavigate();
     const { isLoggedIn, logout } = useAuth();
 
+    // 🎯 NUEVO: Solo "Cerrar Sesión" en el dropdown
     const navLinks = isLoggedIn 
     ? [
-        {
-            label: "Inicio",
-            url: "/home"
-        },
-        {
-            label: "Dashboard",
-            url: "/dashboard"
-        },
         {
             label: "Cerrar Sesión",
             url: "/",

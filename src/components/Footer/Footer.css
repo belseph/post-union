@@ -1,6 +1,6 @@
 .footer {
     /* 🎨 NUEVO: Color coherente con el navbar */
-    background-color: #6D28D9;
+    background-color: #03ac7f;
     color: white;
     padding: 2rem 1.5rem 1rem;
     width: 100%;
@@ -27,7 +27,7 @@
 
 /* 🎨 NUEVO: Estilo del ícono del footer coherente */
 .footer-icon {
-    color: #A78BFA;
+    color: #A7F3D0;
     transition: all 0.3s ease;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .footer-links a:hover {
-    /* 🎨 NUEVO: Hover coherente con el tema morado */
+    /* 🎨 NUEVO: Hover coherente con el tema */
     color: #F59E0B;
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);

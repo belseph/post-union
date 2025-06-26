@@ -5,9 +5,9 @@
     top: 0;
     width: 100%;
     height: 4rem;
-    /* 🎨 NUEVO: Color morado coherente con el login */
-    background: #6D28D9;
-    padding-left: 1rem;
+    /* 🎨 NUEVO: Color principal #03ac7f */
+    background: #03ac7f;
+    padding: 0 1rem;
     color: white;
     z-index: 1000;
     /* Sombra sutil para profundidad */
@@ -27,17 +27,14 @@
 }
 
 .navbar-logo__container {
-    /* 🎨 NUEVO: Morado bonito como en el login */
-    background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+    /* 🎨 NUEVO: Logo transparente */
+    background: transparent;
     padding: 0.5rem;
     border-radius: 0.75rem;
-    backdrop-filter: blur(0.25rem);
-    -webkit-backdrop-filter: blur(0.25rem);
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
 }
 
 /* 🌟 NUEVO: Efecto hover amarillo para el logo */
@@ -92,33 +89,87 @@
     opacity: 0.9;
 }
 
-.menu {
+/* 🎯 NUEVO: Navegación principal */
+.navbar-nav {
     display: flex;
-    position: relative;
-    margin-right: 1rem;
-    gap: 0.75rem;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0 2rem;
 }
 
-.menu-session,
-.menu-register {
+.navbar-nav a {
     color: white;
-    padding: 0.4rem 0.75rem;
-    border: none;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 0.8rem;
-    /* Fondo semi-transparente */
-    background: rgba(255, 255, 255, 0.15);
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(4px);
 }
 
-.menu-session:hover,
-.menu-register:hover {
-    /* Hover coherente con el morado */
-    background: rgba(255, 255, 255, 0.25);
-    transform: translateY(-1px);
+.navbar-nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-nav a.active {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔔 NUEVO: Botón de notificaciones */
+.notification-button {
+    position: relative;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.notification-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+}
+
+.notification-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: #EF4444;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.menu {
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: 1rem;
 }
 
 .dropdown-toggle {
@@ -144,7 +195,7 @@
     object-fit: cover;
     display: block;
     border-radius: 0.75rem;
-    /* Borde sutil morado */
+    /* Borde sutil */
     border: 2px solid rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -171,8 +222,8 @@
     padding: 0.5rem 0;
     border-radius: 0.75rem;
     z-index: 2000;
-    /* Borde sutil */
-    border: 1px solid rgba(109, 40, 217, 0.2);
+    /* 🎨 NUEVO: Borde con el color principal */
+    border: 1px solid rgba(3, 172, 127, 0.2);
 }
 
 .dropdown-menu li {
@@ -195,33 +246,71 @@
 }
 
 .dropdown-menu li a:hover {
-    /* Hover morado coherente */
-    background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+    /* 🎨 NUEVO: Hover con el color principal */
+    background: linear-gradient(135deg, #03ac7f, #059669);
     color: white;
     transform: translateX(2px);
 }
 
-/* Estilos responsivos para escritorio/tableta */
-@media (min-width: 768px) {
-    .menu-session,
-    .menu-register {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-        border-radius: 0.5rem;
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 0.5rem;
     }
 
-    .menu {
-        gap: 1rem;
-        margin-right: 1rem;
+    .navbar-nav {
+        display: none; /* Ocultar navegación en móviles */
     }
 
     .navbar-title {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+    }
+    
+    .navbar-subtitle {
+        font-size: 0.7rem;
+    }
+    
+    .navbar-logo__container {
+        padding: 0.4rem;
     }
 
-    .navbar-subtitle {
+    .dropdown-toggle-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .notification-button {
+        padding: 0.5rem;
+    }
+
+    .menu {
+        gap: 0.5rem;
+    }
+}
+
+/* Responsive para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .navbar-nav {
+        gap: 1rem;
+        margin: 0 1rem;
+    }
+
+    .navbar-nav a {
         font-size: 0.8rem;
-        padding-left: 1.3rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Estilos responsivos para escritorio */
+@media (min-width: 1025px) {
+    .navbar-nav {
+        gap: 1.5rem;
+        margin: 0 2rem;
+    }
+
+    .navbar-nav a {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
     }
 
     .dropdown-menu {
@@ -248,25 +337,5 @@
     to {
         transform: translateY(0);
         opacity: 1;
-    }
-}
-
-/* Responsive mejorado */
-@media (max-width: 767px) {
-    .navbar-title {
-        font-size: 1.25rem;
-    }
-    
-    .navbar-subtitle {
-        font-size: 0.7rem;
-    }
-    
-    .navbar-logo__container {
-        padding: 0.4rem;
-    }
-
-    .dropdown-toggle-icon {
-        width: 32px;
-        height: 32px;
     }
 }
