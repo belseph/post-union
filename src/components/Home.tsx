@@ -8,7 +8,7 @@ import { IPost } from "../types/IPost";
 import { FilterTag } from "./Home/FilterTag";
 import { filterPosts, getAllTags } from "../utils/post";
 import { useNavigate } from "react-router-dom";
-import { usePostsWithContext } from './Post/hooks/usePostsWithContext';
+import { usePosts } from './Post/hooks/usePosts';
 
 interface HomeProps {
   selectedTag: string;
@@ -24,7 +24,7 @@ export const Home = ({ selectedTag, currentUserId }: HomeProps) => {
       handleReaction, 
       handleCommentReaction,
       handleNewComment
-    } = usePostsWithContext({ currentUserId });
+    } = usePosts({ currentUserId });
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
@@ -32,7 +32,6 @@ export const Home = ({ selectedTag, currentUserId }: HomeProps) => {
   const allTags = useMemo(() => getAllTags(posts), [posts]);
 
   console.log('🏠 Home - Current User ID:', currentUserId);
-  console.log('📋 Posts en Home:', posts.length);
   
   const filteredPosts = useMemo(() => 
     filterPosts(posts, searchTerm, selectedTags),
