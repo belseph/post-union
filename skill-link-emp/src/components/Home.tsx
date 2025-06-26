@@ -10,7 +10,12 @@ import { filterPosts, getAllTags } from "../utils/post";
 import { useNavigate } from "react-router-dom";
 import { usePosts } from './Post/hooks/usePosts';
 
-export const Home = ({ selectedTag, currentUserId }) => {
+interface HomeProps {
+  selectedTag: string;
+  currentUserId: string | null;
+}
+
+export const Home = ({ selectedTag, currentUserId }: HomeProps) => {
   const { 
       posts, 
       loading, 
@@ -26,7 +31,7 @@ export const Home = ({ selectedTag, currentUserId }) => {
   let router = useNavigate()
   const allTags = useMemo(() => getAllTags(posts), [posts]);
 
-  
+  console.log('🏠 Home - Current User ID:', currentUserId);
   
   const filteredPosts = useMemo(() => 
     filterPosts(posts, searchTerm, selectedTags),

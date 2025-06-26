@@ -1,11 +1,6 @@
 import React from 'react';
 import { X, Check, Tag } from 'lucide-react';
-
-interface TagInfo {
-  id: string;
-  label: string;
-  description: string;
-}
+import { TagInfo } from '../../constants/tags';
 
 interface TagSelectionModalProps {
   isOpen: boolean;

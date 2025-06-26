@@ -5,20 +5,7 @@ import { ArrowLeft, Plus, Image, Tag, FileText, Send } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { TagSelectionModal } from './TagSelectionModal';
-
-// Definir las etiquetas disponibles (mismas que en el backend)
-export const AVAILABLE_TAGS = [
-  { id: 'Tecnología', label: 'Tecnología', description: 'Innovación, desarrollo de software, hardware y tendencias tecnológicas' },
-  { id: 'Negocios y Emprendimiento', label: 'Negocios y Emprendimiento', description: 'Startups, estrategias de negocio, emprendimiento y liderazgo' },
-  { id: 'Arte y Creatividad', label: 'Arte y Creatividad', description: 'Diseño, arte visual, música, escritura y expresión creativa' },
-  { id: 'Ciencia y Educación', label: 'Ciencia y Educación', description: 'Investigación, aprendizaje, métodos educativos y descubrimientos' },
-  { id: 'Idiomas y Cultura', label: 'Idiomas y Cultura', description: 'Aprendizaje de idiomas, diversidad cultural y tradiciones' },
-  { id: 'Salud y Bienestar', label: 'Salud y Bienestar', description: 'Fitness, nutrición, salud mental y estilo de vida saludable' },
-  { id: 'Deportes', label: 'Deportes', description: 'Actividades deportivas, competencias y vida activa' },
-  { id: 'Medio ambiente y Sostenibilidad', label: 'Medio ambiente y Sostenibilidad', description: 'Ecología, sostenibilidad y cuidado del medio ambiente' },
-  { id: 'Desarrollo Personal', label: 'Desarrollo Personal', description: 'Crecimiento personal, productividad y habilidades blandas' },
-  { id: 'Video Juegos y Entretenimiento', label: 'Video Juegos y Entretenimiento', description: 'Gaming, entretenimiento digital y cultura geek' }
-];
+import { AVAILABLE_TAGS } from '../../constants/tags';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://skill-link-emprendedor-pjof.onrender.com';
 
@@ -34,6 +21,10 @@ export const AddPost = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showTagModal, setShowTagModal] = useState(false);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+
+  // Debug: Verificar datos del usuario
+  console.log('🔍 Usuario actual en AddPost:', user);
+  console.log('🆔 ID del usuario:', user?.userId);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, files } = e.target;
@@ -63,6 +54,7 @@ export const AddPost = () => {
   const createPost = async (postData: { titulo: string; contenido: string }, userId: string) => {
     try {
       console.log('🚀 Creando post:', postData);
+      console.log('👤 Con usuario ID:', userId);
       
       const response = await fetch(`${API_BASE_URL}/api/posts?userId=${userId}`, {
         method: 'POST',
@@ -117,8 +109,9 @@ export const AddPost = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!user) {
+    if (!user || !user.userId) {
       alert('Debes estar logueado para crear un post');
+      console.error('❌ Usuario no encontrado o sin ID:', user);
       return;
     }
 
